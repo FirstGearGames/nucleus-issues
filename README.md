@@ -14,7 +14,7 @@ Both go through a form that asks for the facts an investigation needs: your vers
 ## What does not belong here
 
 - **Support questions.** How to do something, why your project will not compile, whether an approach is sound. Start with the [documentation](https://nucleus-networking-docs.pages.dev/docs/v1/).
-- **Pull requests.** This repository does not accept them, and any that are opened are closed automatically. There is no source here to change.
+- **Pull requests.** They are turned off for this repository. There is no source here to change.
 
 ## Before you file a bug
 
