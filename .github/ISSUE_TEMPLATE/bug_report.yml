@@ -1,0 +1,170 @@
+name: Bug report
+description: Something in Nucleus behaves incorrectly
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This tracker is for reproducible bugs in Nucleus. The fields below are what it takes to
+        investigate one, so please fill them in rather than describing the problem in prose alone.
+
+  - type: input
+    id: nucleus-version
+    attributes:
+      label: Nucleus version
+      description: A version number, a commit sha, or the date you downloaded the package.
+      placeholder: "1.0.3, or downloaded 2026-09-20"
+    validations:
+      required: true
+
+  - type: textarea
+    id: upgrade-blocker
+    attributes:
+      label: Why you cannot upgrade
+      description: >
+        Leave this blank if you are on the latest version. If a newer version introduced a
+        problem that stops you from upgrading, describe it here.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Edition
+      options:
+        - Free
+        - Pro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport
+      options:
+        - SynapseSocket
+        - BlitzRelay
+        - Newfarm
+        - A custom transport
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: topology
+    attributes:
+      label: Topology
+      description: How the peers were arranged when the problem happened.
+      options:
+        - Host and clients
+        - Dedicated server and clients
+        - Client only
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: unity-version
+    attributes:
+      label: Unity version
+      placeholder: "6000.5.0f1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: Subsystem
+      description: The part of Nucleus the problem appears to be in. Pick "Other or unsure" if you cannot tell.
+      options:
+        - Transforms and NetworkTransform
+        - Projected physics and ProjectedRigidbody
+        - Prediction and reconciliation
+        - Navigation and NetworkNavMeshAgent
+        - Animation
+        - Spawning and despawning
+        - Scenes and worlds
+        - Area of interest and visibility
+        - Level of detail
+        - Remote calls (RPCs)
+        - State and change callbacks
+        - Persistence
+        - Serialization or the source generator
+        - Transports and connections
+        - Controllers and inputs
+        - Editor and inspector
+        - Other or unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: >
+        Numbered steps, starting from opening the project. Say whether it happens in the editor,
+        in a build, or both, and how many peers have to be running.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected and actual behaviour
+      description: What you expected to happen, then what happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console and editor log output
+      description: >
+        Paste any errors or warnings. Some faults only appear in Unity's editor log rather than
+        the console, so please check there too if the console is clean.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: packet-loss
+    attributes:
+      label: Simulated packet loss
+      description: If you reproduced this with simulated packet loss, what percentage? Leave blank if none.
+      placeholder: "5%"
+    validations:
+      required: false
+
+  - type: textarea
+    id: reproduction-project
+    attributes:
+      label: Reproduction project
+      description: >
+        Drag a zipped Unity project that reproduces this into the box below and GitHub will
+        attach it. It must be under 1 MB and follow the reproduction guidelines linked in the
+        confirmations at the bottom of this form.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues before opening this one.
+          required: true
+        - label: I am using the latest version of Nucleus, or I have explained above why I cannot upgrade.
+          required: true
+        - label: >
+            I understand that any project attached to reproduce this issue must be under 1 MB and
+            must follow the [reproduction guidelines](https://nucleus-networking-docs.pages.dev/docs/v1/reference/reporting-a-bug/).
+          required: true
+        - label: >
+            I understand that an issue without a reproduction project may receive lower priority,
+            and may be closed if it cannot be reproduced.
+          required: true

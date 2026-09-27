@@ -1,0 +1,68 @@
+name: Feature request
+description: Ask for something Nucleus does not do yet
+title: "[Feature]: "
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the problem you are trying to solve before the solution you have in mind. The
+        problem is what decides whether a feature gets built, and often there is already a way
+        to solve it.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem you are trying to solve
+      description: What you are building, and what Nucleus makes hard or impossible today.
+    validations:
+      required: true
+
+  - type: textarea
+    id: request
+    attributes:
+      label: What you would like Nucleus to do
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What you do today instead
+      description: The workaround you are using, if any, and where it falls short.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: Subsystem
+      description: The part of Nucleus this would belong to. Pick "Other or unsure" if it does not fit one.
+      options:
+        - Transforms and NetworkTransform
+        - Projected physics and ProjectedRigidbody
+        - Prediction and reconciliation
+        - Navigation and NetworkNavMeshAgent
+        - Animation
+        - Spawning and despawning
+        - Scenes and worlds
+        - Area of interest and visibility
+        - Level of detail
+        - Remote calls (RPCs)
+        - State and change callbacks
+        - Persistence
+        - Serialization or the source generator
+        - Transports and connections
+        - Controllers and inputs
+        - Editor and inspector
+        - Other or unsure
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues and the documentation before opening this one.
+          required: true
