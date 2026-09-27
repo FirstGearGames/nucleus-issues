@@ -1,0 +1,34 @@
+name: Close pull requests
+
+# GitHub has no setting to disable pull requests, so this closes any that are opened.
+# pull_request_target runs the workflow from the base branch with a writable token, which
+# is what lets it close a pull request opened from a fork.
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+  # Commenting on and locking a pull request go through the issues API, so both scopes are needed.
+  issues: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const number = context.payload.pull_request.number;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: number,
+              body: [
+                'Thanks for taking the time, but this repository does not accept pull requests.',
+                '',
+                'It exists only to track bugs and feature requests for Nucleus; the engine source lives elsewhere and is not public.',
+                'If you were fixing something, please [open a bug report](https://github.com/FirstGearGames/nucleus-issues/issues/new/choose) describing the problem instead.',
+              ].join('\n'),
+            });
+            await github.rest.pulls.update({ ...context.repo, pull_number: number, state: 'closed' });
+            await github.rest.issues.lock({ ...context.repo, issue_number: number, lock_reason: 'off-topic' });
