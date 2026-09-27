@@ -131,15 +131,6 @@ body:
     validations:
       required: false
 
-  - type: input
-    id: packet-loss
-    attributes:
-      label: Simulated packet loss
-      description: If you reproduced this with simulated packet loss, what percentage? Leave blank if none.
-      placeholder: "5%"
-    validations:
-      required: false
-
   - type: textarea
     id: reproduction-project
     attributes:
