@@ -73,6 +73,21 @@ body:
       required: true
 
   - type: dropdown
+    id: operating-system
+    attributes:
+      label: Operating system
+      description: Every platform the affected peers were running on.
+      multiple: true
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+    validations:
+      required: true
+
+  - type: dropdown
     id: subsystem
     attributes:
       label: Subsystem
