@@ -21,21 +21,11 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: affected-page
     attributes:
       label: Affected page name
-      options:
-        - Home
-        - Features
-        - Pricing
-        - Downloads
-        - FAQ
-        - Contact
-        - Software License Agreement
-        - Revenue Share Policy
-        - Privacy Policy
-        - Other
+      description: The page the issue is on, if it is on one.
     validations:
       required: false
 
