@@ -1,0 +1,48 @@
+name: Website
+description: Something wrong with, or missing from, the Nucleus website or your account
+title: "[Website]: "
+labels: ["website", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is for the Nucleus website and your account on it. For a problem with Nucleus
+        itself, use the bug report or feature request form instead.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of issue
+      options:
+        - FAQ
+        - Account
+        - Other bug
+        - Other enhancement
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-page
+    attributes:
+      label: Affected web page, if applicable
+      options:
+        - Home
+        - Features
+        - Pricing
+        - Downloads
+        - FAQ
+        - Contact
+        - Software License Agreement
+        - Revenue Share Policy
+        - Privacy Policy
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: What happened, or what you would like changed. Never include passwords or payment details.
+    validations:
+      required: false
