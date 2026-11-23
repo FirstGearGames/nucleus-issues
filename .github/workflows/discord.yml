@@ -1,12 +1,15 @@
-# Posts pushes to main and newly opened issues to the development Discord channel. GitHub's own event payload is forwarded to Discord's
-# GitHub-compatible webhook, so the messages read as a GitHub webhook's would; a plain webhook cannot be limited to one branch.
+# Posts pushes to main, issues opened, closed or reopened, and new issue comments to the development Discord channel. GitHub's own
+# event payload is forwarded to Discord's GitHub-compatible webhook, so the messages read as a GitHub webhook's would; a plain webhook
+# cannot be limited to one branch.
 name: Discord notifications
 
 on:
   push:
     branches: [main]
   issues:
-    types: [opened]
+    types: [opened, closed, reopened]
+  issue_comment:
+    types: [created]
 
 permissions: {}
 
