@@ -18,4 +18,5 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           EVENT_NAME: ${{ github.event_name }}
-        run: curl --silent --show-error --fail-with-body -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: $EVENT_NAME" --data-binary @"$GITHUB_EVENT_PATH" "$DISCORD_WEBHOOK_URL/github"
+        run: |
+          curl --silent --show-error --fail-with-body -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: $EVENT_NAME" --data-binary @"$GITHUB_EVENT_PATH" "$DISCORD_WEBHOOK_URL/github"
