@@ -1,0 +1,21 @@
+# Posts pushes to main and newly opened issues to the development Discord channel. GitHub's own event payload is forwarded to Discord's
+# GitHub-compatible webhook, so the messages read as a GitHub webhook's would; a plain webhook cannot be limited to one branch.
+name: Discord notifications
+
+on:
+  push:
+    branches: [main]
+  issues:
+    types: [opened]
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Forward the event to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: curl --silent --show-error --fail-with-body -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: $EVENT_NAME" --data-binary @"$GITHUB_EVENT_PATH" "$DISCORD_WEBHOOK_URL/github"
